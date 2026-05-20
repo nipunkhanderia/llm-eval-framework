@@ -9,10 +9,18 @@ melbourne_dataz = pd.read_csv(melbourne_file_path)
 
 
 y = melbourne_dataz.SalePrice
-print(y)
+# print(y)
 
 melbourne_features = ["LotArea","YearBuilt","1stFlrSF","2ndFlrSF","FullBath","BedroomAbvGr","TotRmsAbvGrd"]
 
 X = melbourne_dataz[melbourne_features]
-print(X.describe())
+# print(X.describe())
+
+from sklearn.tree import DecisionTreeRegressor
+
+predicting_price = DecisionTreeRegressor(random_state=9)
+predicting_price.fit(X, y)
+
+price_prediction = predicting_price.predict(X)
+print(price_prediction)
 
